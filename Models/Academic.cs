@@ -37,55 +37,55 @@ namespace Universalis.Models
         /// The Sexo enum: { VAR, MUJ }
         /// </summary>
         /// <value></value>
-        public int Sexo { get; set; }
+        public Sexo Sexo { get; set; }
 
         /// <summary>
         /// The Cargo
         /// </summary>
         /// <value></value>
-        public int Cargo { get; set; }
+        public string Cargo { get; set; }
 
         /// <summary>
         /// The Unidad in the university
         /// </summary>
         /// <value></value>
-        public int Unidad { get; set; }
+        public string Unidad { get; set; }
 
         /// <summary>
         /// The work E-mail 
         /// </summary>
         /// <value></value>
-        public int Email { get; set; }
+        public string Email { get; set; }
 
         /// <summary>
         /// The mobile Telefono
         /// </summary>
         /// <value></value>
-        public int Telefono { get; set; }
+        public string Telefono { get; set; }
 
         /// <summary>
         /// The work Oficina 
         /// </summary>
         /// <value></value>
-        public int Oficina { get; set; }
+        public string Oficina { get; set; }
 
         /// <summary>
         /// The work Direccion 
         /// </summary>
         /// <value></value>
-        public int DireccionTrabajo { get; set; }
+        public string DireccionTrabajo { get; set; }
 
         /// <summary>
         /// The home Direccion
         /// </summary>
         /// <value></value>
-        public int DireccionCasa { get; set; }
+        public string DireccionCasa { get; set; }
 
         /// <summary>
         /// The residential Comuna
         /// </summary>
         /// <value></value>
-        public int Comuna { get; set; }
+        public string Comuna { get; set; }
 
     }
 }
