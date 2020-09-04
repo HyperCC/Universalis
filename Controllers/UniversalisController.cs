@@ -13,10 +13,18 @@ namespace Universalis.Controller
     public class UniversalisController : ControllerBase
     {
         /// <summary>
-        /// MockNabullenRepo instance void 
+        /// Repo interface with all operations
         /// </summary>
-        /// <returns>the new mock</returns>
-        private readonly MockAcademicRepo _repository = new MockAcademicRepo();
+        private readonly IUniversalisRepo _repository;
+
+        /// <summary>
+        /// The constructor with dependency injection
+        /// </summary>
+        /// <param name="repository"></param>//  
+        public UniversalisController(IUniversalisRepo repository)
+        {
+            this._repository = repository;
+        }
 
         /// <summary>
         /// Get all Academic endpoint
@@ -38,9 +46,9 @@ namespace Universalis.Controller
         [HttpGet("{id}")]
         public ActionResult<Academic> GetAcademicById(int id)
         {
-            var nabullItem = this._repository.GetAcademicById(id);
+            var academicItems = this._repository.GetAcademicById(id);
 
-            return Ok(nabullItem);
+            return Ok(academicItems);
         }
     }
 }
