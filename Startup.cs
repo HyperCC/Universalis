@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Universalis.Data;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
 
 namespace Universalis
 {
@@ -33,7 +34,10 @@ namespace Universalis
 
             services.AddControllers();
 
-            // add implementation to sql server db
+            // automapper to make DTO initialization
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            // add implementation to sql server DB
             services.AddScoped<IUniversalisRepo, SqlUniversalisRepo>();
         }
 
