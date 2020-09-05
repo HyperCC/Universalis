@@ -33,7 +33,7 @@ namespace Universalis.Controller
         [HttpGet]
         public ActionResult<IEnumerable<Academic>> GetAllAcademics()
         {
-            var academicItems = this._repository.GetAppAcademics();
+            var academicItems = this._repository.GetAllAcademics();
 
             return Ok(academicItems);
         }

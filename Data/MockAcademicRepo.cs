@@ -12,7 +12,7 @@ namespace Universalis.Data
         /// Mock with all the Academics
         /// </summary>
         /// <returns>Enumerable to all Academics</returns>
-        public IEnumerable<Academic> GetAppAcademics()
+        public IEnumerable<Academic> GetAllAcademics()
         {
             var academics = new List<Academic>
             {

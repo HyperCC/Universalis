@@ -12,7 +12,7 @@ namespace Universalis.Data
         /// Standard query operators to Academic with methods that follow the LINQ pattern
         /// </summary>
         /// <returns>Enumerable Academics</returns>
-        IEnumerable<Academic> GetAppAcademics();
+        IEnumerable<Academic> GetAllAcademics();
 
         /// <summary>
         /// Get a Academic by an id
