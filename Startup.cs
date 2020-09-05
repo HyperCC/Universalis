@@ -33,7 +33,8 @@ namespace Universalis
 
             services.AddControllers();
 
-            services.AddScoped<IUniversalisRepo, MockAcademicRepo>();
+            // add implementation to sql server db
+            services.AddScoped<IUniversalisRepo, SqlUniversalisRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
