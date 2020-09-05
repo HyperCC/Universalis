@@ -1,15 +1,7 @@
+using System.ComponentModel.DataAnnotations;
 
 namespace Universalis.Models
 {
-    /// <summary>
-    /// Enumerator to Sexo
-    /// </summary>
-    public enum Sexo
-    {
-        VAR = 0,
-        MUJ = 1
-    }
-
     /// <summary>
     /// Academic model of Universalis
     /// </summary>
@@ -19,36 +11,28 @@ namespace Universalis.Models
         /// Academic id 
         /// </summary>
         /// <value></value>
+        [Key]
         public int Id { get; set; }
 
         /// <summary>
         /// The complete Nombre
         /// </summary>
         /// <value></value>
+        [Required]
         public string Nombre { get; set; }
-
-        /// <summary>
-        /// The Rut
-        /// </summary>
-        /// <value></value>
-        public string Rut { get; set; }
-
-        /// <summary>
-        /// The Sexo enum: { VAR, MUJ }
-        /// </summary>
-        /// <value></value>
-        public Sexo Sexo { get; set; }
 
         /// <summary>
         /// The Cargo
         /// </summary>
         /// <value></value>
+        [Required]
         public string Cargo { get; set; }
 
         /// <summary>
         /// The Unidad in the university
         /// </summary>
         /// <value></value>
+        [Required]
         public string Unidad { get; set; }
 
         /// <summary>
@@ -58,7 +42,7 @@ namespace Universalis.Models
         public string Email { get; set; }
 
         /// <summary>
-        /// The mobile Telefono
+        /// The office Telefono
         /// </summary>
         /// <value></value>
         public string Telefono { get; set; }
@@ -73,19 +57,7 @@ namespace Universalis.Models
         /// The work Direccion 
         /// </summary>
         /// <value></value>
+        [Required]
         public string DireccionTrabajo { get; set; }
-
-        /// <summary>
-        /// The home Direccion
-        /// </summary>
-        /// <value></value>
-        public string DireccionCasa { get; set; }
-
-        /// <summary>
-        /// The residential Comuna
-        /// </summary>
-        /// <value></value>
-        public string Comuna { get; set; }
-
     }
 }
