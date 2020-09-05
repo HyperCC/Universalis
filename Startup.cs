@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Universalis.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Universalis
 {
@@ -26,6 +27,10 @@ namespace Universalis
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // add context from configuration string
+            services.AddDbContext<UniversalisContext>(opt => opt.UseSqlServer
+                (Configuration.GetConnectionString("UniversalisConnection")));
+
             services.AddControllers();
 
             services.AddScoped<IUniversalisRepo, MockAcademicRepo>();
