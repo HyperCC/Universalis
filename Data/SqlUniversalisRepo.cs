@@ -9,7 +9,6 @@ namespace Universalis.Data
     /// </summary>
     public class SqlUniversalisRepo : IUniversalisRepo
     {
-
         /// <summary>
         /// The context
         /// </summary>
@@ -20,7 +19,7 @@ namespace Universalis.Data
         /// </summary>
         /// <param name="context">the context</param>
         public SqlUniversalisRepo(UniversalisContext context)
-        {......
+        {
             this._context = context;
         }
 
