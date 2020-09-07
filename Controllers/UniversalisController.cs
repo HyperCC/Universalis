@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Universalis.Data;
-using Universalis.Models;
 using System.Collections.Generic;
+using AutoMapper;
+using Universalis.Dtos;
 
 namespace Universalis.Controller
 {
@@ -18,12 +19,19 @@ namespace Universalis.Controller
         private readonly IUniversalisRepo _repository;
 
         /// <summary>
+        /// Mapper instance
+        /// </summary>
+        private readonly IMapper _mapper;
+
+        /// <summary>
         /// The constructor with dependency injection
         /// </summary>
-        /// <param name="repository"></param>//  
-        public UniversalisController(IUniversalisRepo repository)
+        /// <param name="repository"></param>
+        /// <param name="mapper"></param>
+        public UniversalisController(IUniversalisRepo repository, IMapper mapper)
         {
             this._repository = repository;
+            this._mapper = mapper;
         }
 
         /// <summary>
@@ -31,11 +39,12 @@ namespace Universalis.Controller
         /// </summary>
         /// <returns>the response code with re result</returns>
         [HttpGet]
-        public ActionResult<IEnumerable<Academic>> GetAllAcademics()
+        public ActionResult<IEnumerable<AcademicReadDto>> GetAllAcademics()
         {
             var academicItems = this._repository.GetAllAcademics();
 
-            return Ok(academicItems);
+            // 200 status code with data founded
+            return Ok(this._mapper.Map<IEnumerable<AcademicReadDto>>(academicItems));
         }
 
         /// <summary>
@@ -44,11 +53,18 @@ namespace Universalis.Controller
         /// <param name="id">Academic's id</param>
         /// <returns>the response code with re result</returns>
         [HttpGet("{id}")]
-        public ActionResult<Academic> GetAcademicById(int id)
+        public ActionResult<AcademicReadDto> GetAcademicById(int id)
         {
             var academicItems = this._repository.GetAcademicById(id);
 
-            return Ok(academicItems);
+            if (academicItems != null)
+            {
+                // 200 status code with data founded
+                return Ok(this._mapper.Map<AcademicReadDto>(academicItems));
+            }
+
+            // 404 status code
+            return NotFound();
         }
     }
 }
