@@ -16,6 +16,9 @@ namespace Universalis.Profiles
         {
             // the mapping of Academic
             CreateMap<Academic, AcademicReadDto>();
+
+            // inverse mapping, create Dto and converse to Academic
+            CreateMap<AcademicCreateDto, Academic>(); 
         }
     }
 }

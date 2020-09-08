@@ -3,6 +3,7 @@ using Universalis.Data;
 using System.Collections.Generic;
 using AutoMapper;
 using Universalis.Dtos;
+using Universalis.Models;
 
 namespace Universalis.Controller
 {
@@ -65,6 +66,21 @@ namespace Universalis.Controller
 
             // 404 status code
             return NotFound();
+        }
+
+        /// <summary>
+        /// Create a new Academic endpoint
+        /// </summary>
+        /// <param name="academicCreateDto"></param>
+        /// <returns></returns>
+        public ActionResult<AcademicReadDto> CreateAcademic(AcademicCreateDto academicCreateDto)
+        {
+            var academicModel = _mapper.Map<Academic>(academicCreateDto);
+            _repository.CreateAcademic(academicModel);
+            _repository.SaveChanges(); 
+
+            // 200 status code with new Academic
+            return Ok(academicModel);
         }
     }
 }
