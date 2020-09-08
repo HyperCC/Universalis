@@ -49,5 +49,15 @@ namespace Universalis.Data
                 Telefono = "+56984621195"
             };
         }
+
+        public bool SaveChanges()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void CreateAcademic(Academic academic)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

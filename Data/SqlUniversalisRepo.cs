@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Universalis.Models;
 using System.Linq;
@@ -24,6 +25,25 @@ namespace Universalis.Data
         }
 
         /// <summary>
+        /// Save new changes from context
+        /// </summary>
+        /// <returns></returns>
+        public bool SaveChanges()
+        {
+            // if number of objects updateds >=0 return true
+            return (_context.SaveChanges() >= 0);
+        }
+
+        /// <summary>
+        /// All Academics from DB
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Academic> GetAllAcademics()
+        {
+            return this._context.Academics.ToList();
+        }
+
+        /// <summary>
         /// Find the first Academic by id
         /// </summary>
         /// <param name="id">id to search</param>
@@ -34,12 +54,17 @@ namespace Universalis.Data
         }
 
         /// <summary>
-        /// All Academics from DB
+        /// Create a new Academic with parameter validate
         /// </summary>
-        /// <returns></returns>
-        public IEnumerable<Academic> GetAllAcademics()
+        /// <param name="academic"></param>
+        public void CreateAcademic(Academic academic)
         {
-            return this._context.Academics.ToList();
+            if (academic == null)
+            {
+                throw new ArgumentNullException(nameof(academic));
+            }
+
+            _context.Academics.Add(academic);
         }
     }
 }
