@@ -38,5 +38,11 @@ namespace Universalis.Data
         /// </summary>
         /// <param name="academic"></param>
         void UpdateAcademic(Academic academic);
+
+        /// <summary>
+        /// Delete a Academic into API
+        /// </summary>
+        /// <param name="academic"></param>
+        void DeleteAcademic(Academic academic);
     }
 }

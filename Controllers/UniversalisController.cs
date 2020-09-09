@@ -112,7 +112,7 @@ namespace Universalis.Controller
         }
 
         /// <summary>
-        /// Update a Academic with PATCH request
+        /// Update a Academic endpoint with PATCH request
         /// </summary>
         /// <param name="id"></param>
         /// <param name="patchDocument"></param>

@@ -64,5 +64,10 @@ namespace Universalis.Data
         {
             throw new System.NotImplementedException();
         }
+
+        public void DeleteAcademic(Academic academic)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

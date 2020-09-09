@@ -75,5 +75,19 @@ namespace Universalis.Data
         {
             // still nothing
         }
+
+        /// <summary>
+        /// Delete a Academic verified
+        /// </summary>
+        /// <param name="academic"></param>
+        public void DeleteAcademic(Academic academic)
+        {
+            if (academic == null)
+            {
+                throw new ArgumentNullException(nameof(academic));
+            }
+
+            _context.Academics.Remove(academic);
+        }
     }
 }
