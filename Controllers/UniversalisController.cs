@@ -73,6 +73,7 @@ namespace Universalis.Controller
         /// </summary>
         /// <param name="academicCreateDto"></param>
         /// <returns></returns>
+        [HttpPost]
         public ActionResult<AcademicReadDto> CreateAcademic(AcademicCreateDto academicCreateDto)
         {
             var academicModel = _mapper.Map<Academic>(academicCreateDto);
@@ -83,6 +84,30 @@ namespace Universalis.Controller
 
             // 201 created status code new Academic added to DB
             return CreatedAtRoute(nameof(GetAcademicById), new { Id = AcademicReadDto.Id }, AcademicReadDto);
+        }
+
+        /// <summary>
+        /// Update a existent Academic endpoint
+        /// </summary>
+        /// <returns></returns>
+        [HttpPut("{id}")]
+        public ActionResult UpdateAcademic(int id, AcademicUpdateDto academicUpdateDto)
+        {
+            var academicModelFromRepo = _repository.GetAcademicById(id);
+
+            if (academicModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            // mapping data
+            _mapper.Map(academicUpdateDto, academicModelFromRepo);
+
+            // updating and saving changes
+            _repository.UpdateAcademic(academicModelFromRepo);
+            _repository.SaveChanges();
+
+            return NoContent();
         }
     }
 }

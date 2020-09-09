@@ -18,7 +18,10 @@ namespace Universalis.Profiles
             CreateMap<Academic, AcademicReadDto>();
 
             // inverse mapping, create Dto and converse to Academic
-            CreateMap<AcademicCreateDto, Academic>(); 
+            CreateMap<AcademicCreateDto, Academic>();
+
+            // mapping to update academic from endpoint to Academic
+            CreateMap<AcademicUpdateDto, Academic>();
         }
     }
 }
