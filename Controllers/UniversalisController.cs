@@ -53,7 +53,7 @@ namespace Universalis.Controller
         /// </summary>
         /// <param name="id">Academic's id</param>
         /// <returns>the response code with re result</returns>
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetAcademicById")]
         public ActionResult<AcademicReadDto> GetAcademicById(int id)
         {
             var academicItems = this._repository.GetAcademicById(id);
@@ -77,10 +77,12 @@ namespace Universalis.Controller
         {
             var academicModel = _mapper.Map<Academic>(academicCreateDto);
             _repository.CreateAcademic(academicModel);
-            _repository.SaveChanges(); 
+            _repository.SaveChanges();
 
-            // 200 status code with new Academic
-            return Ok(academicModel);
+            var AcademicReadDto = _mapper.Map<AcademicReadDto>(academicModel);
+
+            // 201 created status code new Academic added to DB
+            return CreatedAtRoute(nameof(GetAcademicById), new { Id = AcademicReadDto.Id }, AcademicReadDto);
         }
     }
 }
