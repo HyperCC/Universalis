@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using AutoMapper;
 using Universalis.Dtos;
 using Universalis.Models;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace Universalis.Controller
 {
@@ -109,5 +110,43 @@ namespace Universalis.Controller
 
             return NoContent();
         }
+
+        /// <summary>
+        /// Update a Academic with PATCH request
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="patchDocument"></param>
+        /// <returns></returns>
+        public ActionResult PartialAcademicUpdate(int id, JsonPatchDocument<AcademicUpdateDto> patchDocument)
+        {
+            var academicModelFromRepo = _repository.GetAcademicById(id);
+
+            // verificate if exist the Academic
+            if (academicModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            // generate a Academic with the data provided
+            var academicToPatch = _mapper.Map<AcademicUpdateDto>(academicModelFromRepo);
+            // apply patch method
+            patchDocument.ApplyTo(academicToPatch, ModelState);
+
+            // verify the correctly application of patch to Academic used
+            if (!TryValidateModel(academicToPatch))
+            {
+                return ValidationProblem(ModelState);
+            }
+
+            // mapping data with patch request
+            _mapper.Map(academicToPatch, academicModelFromRepo);
+
+            // updating and saving changes
+            _repository.UpdateAcademic(academicModelFromRepo);
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
+
     }
 }
