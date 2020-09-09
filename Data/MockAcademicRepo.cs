@@ -59,5 +59,10 @@ namespace Universalis.Data
         {
             throw new System.NotImplementedException();
         }
+
+        public void UpdateAcademic(Academic academic)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

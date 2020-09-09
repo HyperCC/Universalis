@@ -12,7 +12,7 @@ namespace Universalis.Data
         /// Save the changes in the DB
         /// </summary>
         /// <returns></returns>
-        bool SaveChanges(); 
+        bool SaveChanges();
 
         /// <summary>
         /// Standard query operators to Academic with methods that follow the LINQ pattern
@@ -32,5 +32,11 @@ namespace Universalis.Data
         /// </summary>
         /// <param name="academic"></param>
         void CreateAcademic(Academic academic);
+
+        /// <summary>
+        /// Update a Academic provided by DB
+        /// </summary>
+        /// <param name="academic"></param>
+        void UpdateAcademic(Academic academic);
     }
 }

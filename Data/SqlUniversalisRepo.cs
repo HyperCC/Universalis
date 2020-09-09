@@ -66,5 +66,14 @@ namespace Universalis.Data
 
             _context.Academics.Add(academic);
         }
+
+        /// <summary>
+        /// Update a existent Academic provided by DB
+        /// </summary>
+        /// <param name="academic"></param>
+        public void UpdateAcademic(Academic academic)
+        {
+            // still nothing
+        }
     }
 }
