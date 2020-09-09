@@ -148,5 +148,27 @@ namespace Universalis.Controller
             return NoContent();
         }
 
+        /// <summary>
+        /// Delete Academic by id endpoint
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult DeleteAcademic(int id)
+        {
+            var academicModelFromRepo = _repository.GetAcademicById(id);
+
+            // verify if exist the Academic requested
+            if (academicModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            // send Academic validated to repository to delete and save changes
+            _repository.DeleteAcademic(academicModelFromRepo);
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
+
     }
 }
