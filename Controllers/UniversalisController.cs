@@ -117,6 +117,7 @@ namespace Universalis.Controller
         /// <param name="id"></param>
         /// <param name="patchDocument"></param>
         /// <returns></returns>
+        [HttpPatch("{id}")]
         public ActionResult PartialAcademicUpdate(int id, JsonPatchDocument<AcademicUpdateDto> patchDocument)
         {
             var academicModelFromRepo = _repository.GetAcademicById(id);
@@ -153,6 +154,7 @@ namespace Universalis.Controller
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [HttpDelete("{id}")]
         public ActionResult DeleteAcademic(int id)
         {
             var academicModelFromRepo = _repository.GetAcademicById(id);
