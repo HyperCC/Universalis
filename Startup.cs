@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Universalis.Data;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
+using Newtonsoft.Json.Serialization;
 
 namespace Universalis
 {
@@ -32,7 +33,11 @@ namespace Universalis
             services.AddDbContext<UniversalisContext>(opt => opt.UseSqlServer
                 (Configuration.GetConnectionString("UniversalisConnection")));
 
-            services.AddControllers();
+            // customize how objects are serialized to JSON when add news Academics
+            services.AddControllers().AddNewtonsoftJson(s =>
+            {
+                s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            });
 
             // automapper to make DTO initialization
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
